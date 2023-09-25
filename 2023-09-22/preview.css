@@ -1,0 +1,49 @@
+@theme theme
+
+@import "default";
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+:root {
+  --color-primary: #db2777;
+  --color-primary-light: #f3e8f5;
+  --color-primary-dark: #9f1853;
+  --color-secondary: #3b82f6;
+
+  --color--text: #111827;
+}
+
+body {
+  background: white;
+  color: var(--color--text);
+  font-weight: 100;
+}
+
+img {
+  margin: auto;
+  display: block;
+  max-height: 500px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+#logo {
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+section {
+}
+
+code,
+pre {
+  opacity: 1;
+  background: #111827;
+}
