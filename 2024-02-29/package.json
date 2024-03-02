@@ -1,0 +1,11 @@
+{
+  "name": "2023-09-22",
+  "version": "1.0.0",
+  "description": "La historia del calendario",
+  "main": "index.html",
+  "scripts": {
+    "build": "npx @marp-team/marp-cli@latest --html --allow-local-files index.md --theme theme.css"
+  },
+  "author": "",
+  "license": "MIT"
+}
