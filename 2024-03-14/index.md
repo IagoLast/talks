@@ -4,6 +4,17 @@ math: mathjax
 theme: theme
 ---
 
+<style>
+table {
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 29px;
+}
+table td {
+  font-family: monospace;
+}
+</style>
+
 # ¿Cómo se programa el tiempo?
 
 #### [@iagolast](twitter.com/iagolast)
@@ -20,9 +31,9 @@ Una empresa en la que nos dedicamos principalmente a desarrollar software relaci
 
 ---
 
-# 1) You are a programmer
+# TEST
 
-# 2) You think dates are broken.
+<!-- footer: "Devs & devs con problemas en fechas" -->
 
 <!--
 
@@ -43,9 +54,9 @@ Bien, de los que estáis de pié, levantad la mano si habeis tenido que lidiar c
 
 <!--
 
-Vale, pues por si no lo sabíais, el TC39, el grupo de expertos que decide la evolución de el lenguaje javascript, está trabajando en una nueva característica del lenguaje llamada "Temporal".
+Por si no lo sabíais, el TC39, el grupo de expertos que decide la evolución de el lenguaje javascript, está trabajando en una nueva característica del lenguaje llamada "Temporal".
 
-Entre los principios que guían esta propuesta podemos ler:
+Entre los principios que guían esta propuesta podemos leer:
 
 - Las fechas pueden ser representadas en calendarios locales pero deben ser convertíbles al calendario gregoriano.
 - Todos los días estan basados en un reloj de 24 horas
@@ -54,11 +65,13 @@ Entre los principios que guían esta propuesta podemos ler:
 
 ¿Cuántos de vosotros entendeis estos principios?
 
-Perfecto, pues el objetivo de esta charla es doble. Por una parte quiero dar una introducción a la historia del calendario, desde los calendarios lunares hasta los sistemas utilizados en los lenguajes de programación como javascript y por otra quiero daros una serie de consejos para tratar con el tiempo en la programación y con suerte, que entendáis por que Temporal supone un avance increible en javascript.
+Perfecto, pues el objetivo de esta charla es doble. Por una parte quiero dar una introducción a la historia del calendario, desde los calendarios lunares hasta los sistemas utilizados en los lenguajes de programación como javascript y por otra quiero daros una serie de nociones básicas y consejos para tratar con el tiempo y las fechas de la forma más adecuada posible en el contexto la programación.
 
 ---
 
 -->
+
+<!-- footer: '' -->
 
 ---
 
@@ -68,17 +81,15 @@ Perfecto, pues el objetivo de esta charla es doble. Por una parte quiero dar una
 
 <!--
 
-So lets start from the beginning. The calendar. The calendar is just a tool which allows us to measure and organize time. As every tool the calendar has evolved among time.
+Empecemos por el principio, el calendario. El calendario no es más que una herramienta que nos permite medir y organizar el paso del tiempo.
 
-Measuring time can look like an easy task but in reality it is a very very complex task.
+Como todas las herramientas, el calendario ha ido evolucionando a medida que cambian las necesidades y los problemas que tiene que resolver.
 
-One of the key points of this talk is that!
+Para medir el tiempo tenemos que buscar un suceso periódico, es decir, uno que ocurre de forma regular y a intervalos conocidos y contar su número de ocurrencias.
 
-Basically, one easy way to to measure time is to look for a periodic event and count it.
+Como todos sabreis, el sol sale cada día y la luna tiene un ciclo de aproximadamente 28 días y por ello los primeros humanos los empezaron a utilizar para medir el tiempo.
 
-
-
- -->
+-->
 
 ---
 
@@ -88,21 +99,56 @@ Basically, one easy way to to measure time is to look for a periodic event and c
 
 ![bg right:70% ](img/dia-sideral.jpg)
 
+<!--
+
+En contra de lo que podáis pensar, un día no es el tiempo que tarda la tierra en dar una vuelta sobre si misma. (Eso se llama dia sideral).
+
+Un día solar, es el tiempo que tarda la tierra en dar una vuelta sobre si misma más unos minutos para compensar el movimiento de translacción alrededor del sol.
+
+ -->
+
 ---
 
 # 🌔
 
-27.32 solar days
+29.5 solar days
 
 ![bg right:70% ](img/ciclo_lunar.webp)
+
+<!-- Recordemos que estamos hablando de hace decenas de miles de años y que las matemáticas y las multiplicaciones no eran demasiado comunes, por lo que para hablar de ciclos más grandes se utilizaba el ciclo lunar. De aproximadamente 29 días y medio -->
+
+---
+
+![bg](img/01.png)
+
+<!-- Por lo que podemos imaginarnos conversaciones diciendo, "el río está a 3 soles caminando en esa dirección" o "la niña nacerá dentro de 9 lunas" -->
+
+---
+
+![bg contain](img/02.jpeg)
+
+<!--
+ Los primeros calendarios de los que se tiene constancia eran puramente lunares.
+ -->
 
 ---
 
 # ~10.0000 BC
 
-$\frac{365,2422}{27,32} = 13,369$
+$\frac{365,2422 🌞}{29,5 🌝} = 12,38$
 
 ![bg right:58% contain](img/lunar.jpg)
+
+<!--
+
+El problema de utilizar exclusivamente la luna como referente temporal es que se pierde totalmente la nocion de las estaciones.
+
+Al tener meses de 29 días y medio, acumulamos un desfase de más de un tercio anual respecto al año solar.
+
+
+De nuevo, para hablar de embarazos y de distancias caminando estos primeros calendarios son suficientes...
+
+-->
 
 ---
 
@@ -111,6 +157,13 @@ $\frac{365,2422}{27,32} = 13,369$
 ## 🌊 🌾 🌱
 
 ![bg  right:60% contain](img/egypt.jpeg)
+
+<!--
+
+Pero cuando la supervivencia de tu civilización depende en gran parte de predecir correctamente el momento en el que un río va a tener mayor o menor caudal la cosa cambia.
+
+Esto es lo que pasaba en el antiguo Egipto con el rio Nilo.
+ -->
 
 ---
 
@@ -123,13 +176,45 @@ $\frac{365,2422}{27,32} = 13,369$
 
 ![bg  right:60% cover](img/calendario_egipcio.jpeg)
 
+<!--
+Por todo esto los egipcios fueron una de las primeras civilizaciones en tener un calendario lunisolar capaz de predecir estaciones con bastante precisión.
+
+Este calendario constaba de doce meses de 30 días a los que se le añadían algunos meses extra para compensar.
+
+ -->
+
 ---
 
 ![bg ](img/shadow_clock.gif)
 
+<!-- footer: "http://www.hartford-hwp.com/archives/21/004.html" -->
+
+<!--
+
+Los egipcios fueron tambien pioneros a la hora de dividir el día en partes más pequeñas.
+
+Tenían diversos aparatos, como el reloj de sombra que veis aquí que permitía conocer en que momento del día nos encontrábamos con bastante precisión. De hecho algunos linguistas apuntan a que el origen de la palabra "hora" proviene de "Horus" el dios del cielo egipcio.
+
+
+ -->
+
 ---
 
-# 45 BC
+![bg ](img/manos.jpeg)
+
+<!-- footer: '' -->
+
+<!-- Como curiosidad decir que los egipcios, al igual que los sumerios contaban utilizando las falanges de los dedos, y por eso sus días se dividían en 12 horas. -->
+
+---
+
+![bg](img/Sundial.gif)
+
+<!-- Otro dato curioso es que el sentido de las agujas del reloj, es el que es porque es la dirección que tiene la sombra de un reloj de sol en el hemisferio norte. -->
+
+---
+
+# 45 AC
 
 Julian calendar
 
@@ -137,25 +222,26 @@ Julian calendar
 
 <!--
 
-Year 45 BC. Julius Caesar conquered Egypt to the Roman Empire, and Caesar is so impressed by the quality of the Egyptian calendar that he commissions a team of astronomers led by someone named Sosigenes to create a similar calendar for Rome.
+Y con todo esto llegamos al año 45 antes de Cristo.
 
-And the guy nails it, creating a calendar that accumulates an error of 11 minutes per year. Less than two seconds per day.
+Seguramente os suene que Julio César
+
  -->
 
 ---
 
-1. `Martius (31)`: Month of Mars, god of war.
-2. `Aprilis (30)`: (from the verb _aperire_) month of flower opening.
-3. `Maius (31)`: Month of Maia.
-4. `Junius (30)`: Month of Juno (goddess of marriage).
-5. `Quintilis (31)`: Fifth month.
-6. `Sextilis (30)`: Sixth month.
-7. `September (31)`: Seventh month.
-8. `October (30)`: Eighth month.
-9. `November (31)`: Ninth month.
-10. `December (30)`: Tenth month.
-11. `Januarius (31)`: Month of Janus, god of beginnings and endings.
-12. `Februarius (29)`: Month of bonfires and purification. (Leap year every 4 years)
+1. `Martius (31)`: Mes de Marte, dios de la guerra.
+2. `Aprilis (30)`: (del verbo _aperire_) mes de la apertura de las flores.
+3. `Maius (31)`: Mes de Maya.
+4. `Junius (30)`: Mes de Juno (diosa del matrimonio).
+5. `Quintilis (31)`: Quinto mes.
+6. `Sextilis (30)`: Sexto mes.
+7. `September (31)`: Séptimo mes.
+8. `October (30)`: Octavo mes.
+9. `November (31)`: Noveno mes.
+10. `December (30)`: Décimo mes.
+11. `Januarius (31)`: Mes de Jano, dios de los comienzos y los finales.
+12. `Februarius (29)`: Mes de las hogueras y la purificación.
 
 <!--
 
@@ -186,6 +272,25 @@ footer: 365.25 days ~ 365 + 366 days every 4 years
 
 ---
 
+1. `Dies Solis`: Día del Sol, dedicado al Sol.
+2. `Dies Lunae`: Día de la Luna, dedicado a la Luna.
+3. `Dies Martis`: Día de Marte, dedicado a Marte, dios de la guerra.
+4. `Dies Mercurii`: Día de Mercurio, dedicado a Mercurio, el mensajero de los dioses y dios del comercio.
+5. `Dies Iovis`: Día de Júpiter, dedicado a Júpiter, el rey de los dioses.
+6. `Dies Veneris`: Día de Venus, dedicado a Venus, diosa del amor y la belleza.
+7. `Dies Saturni`: Día de Saturno, dedicado a Saturno, dios de la agricultura.
+
+<!--  -->
+
+---
+
+- `Minutum Primum`: Primera pequeña parte,
+  - Referente al primer nivel de división de la hora.
+- `Secundum Minutum`: Segunda pequeña parte
+  - Indica el segundo nivel de división, esta vez del minuto.
+
+---
+
 # 1582
 
 - Error of 10 days
@@ -195,15 +300,20 @@ footer: 365.25 days ~ 365 + 366 days every 4 years
 
 <!--
 
-And we arrive at the year 1582. Remember I told you that the Julian calendar had an error of 11 minutes per year. This mistake led Christians to celebrate Easter 10 days earlier than they should have.
+Pero volvamos al Calendario.
 
-Because of this, other religions were mocking them and to fix this situation, Pope Gregory XIII ordered a calendar reform to correct this discrepancy.
+Como hemos dicho el calendario juliano acumulaba un error de unos 11 minutos al año. Y para 1532, este error suponía un atraso de 10 días.
+
+Para la iglesia, era fundamental la regularidad del calendario litúrgico. Y una de las fiestas fundamentales era la pascua.
+
+La pascua es el primer domingo de luna llena despues del equinocio de primavera.
+
+Como por esa época los cristianos estaban celebrando sus fiestas 10 días tardes las otras religiones se cachondaban de ellos y esto hizo que el papa gregorio XII iniciase una reforma del calendario juliano que ahora conocemos como calendario Gregoriano.
+
 
   -->
 
 ---
-
-<!-- footer: https://www.youtube.com/watch?v=LO5cLQAvtXg -->
 
 # Summary
 
@@ -214,10 +324,31 @@ Because of this, other religions were mocking them and to fix this situation, Po
 - **GREGORIAN YEAR** (365 days + 1 leap year every x years)
   - 365.2425 days. ~26 extra seconds each year
 
+<!-- footer: https://www.youtube.com/watch?v=LO5cLQAvtXg -->
+
+<!--
+- https://www.youtube.com/watch?v=nQgQoQqz4Nk
+
+
+Sin entrar en detalles esta reforma consistió en modificar las normas segun las cuales un año es bisiesto para ajustar la duración del año a la del año solar.
+ -->
+
+---
+
+# Implicaciones
+
+- Muerte de santa teresa
+- Revolución de octubre
+
+<!-- footer: "" -->
+
 <!--
 
+Ademas de eso se eliminaron 10 días de golpe. Por eso se santa teresa murio el 5 de octubre y la enterraron el 15 de octubre.
 
--->
+O la famosa revolución de octubre, fue en realidad en noviembre.
+
+ -->
 
 ---
 
@@ -227,7 +358,9 @@ Because of this, other religions were mocking them and to fix this situation, Po
 
 <!--
 
-And for the following years, everything was prefect. We had a precise calendar that measured years, months, weeks, and days, and we even had clocks that worked at night. However, they were so complex that we had to build a building to house them.
+Pero con todo, por primera vez la humanidad tenia un calendario preciso con el que medir perfectamente años, meses dias y estaciones.
+
+E incluso empezaron a construirse unos complejos mecanismos que permitían conocer la hora con una precisión más que aceptable incluso durante la noche.
 
 -->
 
@@ -235,15 +368,19 @@ And for the following years, everything was prefect. We had a precise calendar t
 
 # 1830s
 
-Trains become mainstream
+Se populariza el ferrocarril
 
 ![bg right contain](img/tren.jpeg)
 
 <!--
 
-Then the train appeared and completely changed the way humans perceived distances and time.
+Hasta que entramos en la primera mitad del siglo XIX y entra en escena el tren.
 
-A journey that used to take days could now be completed in hours.
+El tren cambia por completo la percepción del tiempo y por primera vez los minutos empiezan a ser relevantes a la hora de hablar de viajes.
+
+Hasta entonces, cuando la gente se movía a pie o a caballo, ir de Madrid a Pontevedra era un viaje que llevaba "dias" nadie decia a que hora se llegaba.
+
+Con el tren esto cambia totalmente y se empieza a hablar de la hora de llegada.
 
  -->
 
@@ -271,13 +408,29 @@ Ahora vamos a volver al colegio. Si un tren sale de Barcelona a las 12:00 y otro
 
 ---
 
+![bg contain](img/renfe_tweet.png)
+
+---
+
+# PLOT TWIST!
+
+---
+
+![bg contain](img/local_noon.png)
+
+---
+
+![bg cover 70%](img/local_times.webp)
+
+---
+
 ![bg](img/tren_volcao.jpeg)
 
 ---
 
 # 1840
 
-Greenwich time is set as the official time in all stations.
+### 🚂 Tiempo estandar
 
 ![bg right:60% cover ](img/gw.jpeg)
 
@@ -293,7 +446,7 @@ In November 1840, the Great Western Railway company decided to standarize time a
 
 # 1880
 
-A single time zone in UK
+Unificación horaria en UK
 
 ![bg right:60% cover ](img/Exchangeclock.jpeg)
 
@@ -309,7 +462,7 @@ Despite it may seem normal today, there was much resistance, and in places like 
 
 # 1884
 
-The Greenwich Meridian is established as the reference meridian.
+Se establece como referencia el meridiano de Greenwich.
 
 ![bg right:60% conver](img/conferencia_meridiano.jpeg)
 
@@ -326,9 +479,8 @@ The use of different time zones was proposed.
 
 # 1912
 
-First International Time Conference.
-
-24 time zones are established.
+- Conferencia internacional del tiempo.
+- Se establecen 24 zonas horarias.
 
 ![bg right:55% contain](img/timezones.jpeg)
 
@@ -340,7 +492,7 @@ In 1912, the International Time Conference was held in Paris with representative
 
 # ~1948
 
-Atomic clock
+Reloj atómico
 
 ![bg right:60% ](img/reloj_atomico.jpeg)
 
@@ -356,7 +508,7 @@ We now have a reference system that doesn't rely on the Earth's rotation but on 
 
 # ~1958
 
-International Atomic Time (TAI)
+Tiempo atómico internacional (TAI)
 
 ![bg right](img/tai.png)
 
@@ -401,15 +553,15 @@ Therefore, UTC gradually deviates more and more from International Atomic Time.
 
 ---
 
-# Leap second
+# Segundo intercalar (Leap second)
 
-> An adjustment that is applied to UTC, to accommodate the difference between precise TAI and imprecise observed solar time.
+> Un ajuste que se le aplica a UTC para compensar la diferencia entre el tiempo atómico y el tiempo unviversal.
 
 ---
 
-# Today
+# Hoy
 
-Several time systems can be used.
+Diferentes sistemas horarios
 
 ![bg right contain](img/time_evolution.png)
 
@@ -417,9 +569,9 @@ Several time systems can be used.
 
 ---
 
-# Today II
+# Hoy II
 
-## Time systems & scales
+## Sistemas de referencia temporales
 
 ![bg right contain](img/references.png)
 
@@ -427,7 +579,7 @@ Several time systems can be used.
 
 ---
 
-# POSIX TIME
+# Tiempo POSIX
 
 <!--
 
@@ -447,35 +599,84 @@ POSIX is not intended to be precise; it is designed to make it simple to operate
 
 ---
 
-<!--
+# KE PASA CON LOS LEAP SECONDS!?
 
-Evidentemente esto de asumir que todos los dias tienen el mismo número segundos, es un problema, especialmente cuando se añaden segundos intercalares.
-
- -->
-
-# JS
-
-<!-- footer: https://www.mail-archive.com/leapsecs@rom.usno.navy.mil/msg00109.html -->
-
-**POSIX** Time
-
-![bg right:70% contain](img/ecma_time.png)
+- STEP
+- SMEAR
 
 <!-- footer: '' -->
 
 ---
 
-# What happens with leap seconds ?
+# Stepping leap seconds
 
-<style>
-table {
-  margin-top: 1rem;
-  font-size: 29px;
-}
-table td {
-  font-family: monospace;
-}
-</style>
+| UTC      | TAI      | UTC (s)   | POSIX (step) |
+| -------- | -------- | --------- | ------------ |
+| 23:59:58 | ......16 | 315619216 | 315619198.00 |
+
+---
+
+# Stepping leap seconds
+
+| UTC      | TAI      | UTC (s)   | POSIX (step) |
+| -------- | -------- | --------- | ------------ |
+| 23:59:58 | ......16 | 315619216 | 315619198.00 |
+| 23:59:59 | ......17 | 315619217 | 315619199.00 |
+
+---
+
+# Stepping leap seconds
+
+| UTC          | TAI      | UTC (s)   | POSIX (step) |
+| ------------ | -------- | --------- | ------------ |
+| 23:59:58     | ......16 | 315619216 | 315619198.00 |
+| 23:59:59     | ......17 | 315619217 | 315619199.00 |
+| 23:59:**60** | ......18 | 315619218 | 315619199.00 |
+
+---
+
+# PROBLEM
+
+- Same UNIX second represents 2 UTC times
+- Logs can go back in time
+
+| UTC        | TAI        | UTC (s)     | POSIX (step) |
+| ---------- | ---------- | ----------- | ------------ |
+| 23:59:59.7 | ......17.7 | 315619217.7 | 315619199.70 |
+| 23:59:60.2 | ......18.2 | 315619218.2 | 315619199.20 |
+
+---
+
+# Smearing
+
+## Ralentizar el reloj
+
+| UTC      | TAI      | UTC (s)   | POSIX (step) | POSIX (smear) |
+| -------- | -------- | --------- | ------------ | ------------- |
+| 23:59:58 | ......16 | 315619216 | 315619198.00 | 315619197.75  |
+
+---
+
+# Smearing
+
+| UTC      | TAI      | UTC (s)   | POSIX (step) | POSIX (smear) |
+| -------- | -------- | --------- | ------------ | ------------- |
+| 23:59:58 | ......16 | 315619216 | 315619198.00 | 315619197.75  |
+| 23:59:59 | ......17 | 315619217 | 315619199.00 | 315619198.50  |
+
+---
+
+# Smearing
+
+| UTC          | TAI      | UTC (s)   | POSIX (step) | POSIX (smear) |
+| ------------ | -------- | --------- | ------------ | ------------- |
+| 23:59:58     | ......16 | 315619216 | 315619198.00 | 315619197.75  |
+| 23:59:59     | ......17 | 315619217 | 315619199.00 | 315619198.50  |
+| 23:59:**60** | ......18 | 315619218 | 315619199.00 | 315619199.25  |
+
+---
+
+# Smearing
 
 | UTC          | TAI      | UTC (s)   | POSIX (step) | POSIX (smear) |
 | ------------ | -------- | --------- | ------------ | ------------- |
@@ -486,13 +687,22 @@ table td {
 
 ---
 
-## We don't really need second precision...
+# Smearing
+
+- (-) Los segundos no duran lo mismo.
+- (+) No hay ambiguedad.
+
+<!-- footer: "https://developers.google.com/time/smear" -->
+
+---
+
+## Habitualmente no necesitamos precisión de segundos...
 
 ---
 
 # TIMEZONES 🫠
 
-## Crashing your software since `NaN`
+### Reventando tu software desde `undefined`
 
 ![bg right:35% contain](img/timezones_link.png)
 
@@ -500,13 +710,37 @@ table td {
 
 ---
 
-# Part II: Things to know as a frontend developer
+# Parte II: Software
+
+- Fechas vs instantes
+- Relación entre zona horaria, offset y UTC
+- Las fechas deberían preservar la intención
 
 <!-- footer: '' -->
 
 ---
 
-# JS Dates are INSTANTS
+![bg contain](img/relation.png)
+
+---
+
+![bg contain](img/timescale_instant.png)
+
+<!-- footer: 'Instante' -->
+
+---
+
+![bg contain](img/timescale_madrid.png)
+
+<!-- footer: 'Fecha (dos instantes)' -->
+
+---
+
+![bg contain](img/timescale_australia.png)
+
+<!-- footer: 'Fecha (dos instantes)' -->
+
+---
 
 ```ts
 /**
@@ -529,56 +763,39 @@ date.toISOString(); // '1992-10-12T23:00:00.000Z'
 
 ---
 
-# We just store miliseconds
+# UN TIMESTAMP PIERDE INFORMACIÓN
 
-| Timestamp   | Spain A             | Australia        | Spain B\*           |
-| ----------- | ------------------- | ---------------- | ------------------- |
-| 12345678910 | October 13 at 10:00 | October 14 06:00 | October 13 at 09:00 |
+| Timestamp   | Spain A      | Australia        |
+| ----------- | ------------ | ---------------- |
+| 12345678910 | oct 13 10:00 | october 14 06:00 |
 
 <!-- footer: 'The timestamp does not contain information about the original timezone.' -->
 
 ---
 
-# Dates should preserve the INTENTION
+# LAS COSAS CLARAS
 
-- Rocket launch phases --> Instants
-- Medical appointment --> Civil date
+- Instante (Instant)
+- Fecha (Date)
+- Fecha y hora (DateTime)
 
-<!-- footer: 'Some cases require more information' -->
-
----
-
-# Rocket launch
-
-> - The process starts ($T_{0m}$)
-> - 60 minutes later engine heating. ($T_{60m}$)
-> - 30 minutes later defrosting. ($T_{90m}$)
-
-<!-- footer: 'We use instants relative to a t0' -->
+<!-- footer: '' -->
 
 ---
 
-# Medical appointment
-
-> _"Next year (2025) October 13 at 10:00"_
-
-<!-- footer: 'We use civil time' -->
-
----
-
-# Milliseconds 🤮
+# Milliseconds 👎
 
 `12345667890877`
 
-<!-- footer: 'We lost civil date' -->
+<!-- footer: 'Perdemos la fecha civil' -->
 
 ---
 
-# UTC 🤢
+# UTC 👎
 
 `2024-10-13T10:00:00Z`
 
-<!-- footer: 'We lost civil date' -->
+<!-- footer: 'Es equivalente, perdemos la fecha civil' -->
 
 ---
 
@@ -586,15 +803,26 @@ date.toISOString(); // '1992-10-12T23:00:00.000Z'
 
 `2021-10-13T08:00:00+02:00`
 
-<!-- footer: 'No idea about the timezone' -->
+<!-- footer: 'Seguimos perdiendo la fecha civil y es ambiguo' -->
 
 ---
 
-# Localtime + Timezone 🤨
+# DateTime + Timezone 🤨
 
 `2021-10-13T08:00:00[Europe/Madrid]`
 
-<!-- footer: 'What about DST?' -->
+<!-- footer: 'Ambiguo! El dia del cambio de hora se repiten' -->
+
+---
+
+# DateTime + Timezone II🤨
+
+## Cambio de hora!
+
+`2021-10-13T08:02:00+01:00[Europe/Madrid]`
+`2021-10-13T08:02:00+02:00[Europe/Madrid]`
+
+<!-- footer: 'Ambiguo! El dia del cambio de hora se repiten' -->
 
 ---
 
@@ -602,7 +830,7 @@ date.toISOString(); // '1992-10-12T23:00:00.000Z'
 
 `2021-10-13T08:00:00+02:00[Europe/Madrid]`
 
-<!-- footer: 'This preserves all information 😊 ' -->
+<!-- footer: 'Este formato preserva toda la información 😊 ' -->
 
 ---
 
@@ -612,6 +840,12 @@ date.toISOString(); // '1992-10-12T23:00:00.000Z'
 ![bg right:60% contain](img/temporal.png)
 
 ## <!-- footer: '' -->
+
+---
+
+# Reto ⏰ + 🛫
+
+> "El 31 de Marzo tengo que coger un vuelo a las 6 de la mañana."
 
 ---
 
