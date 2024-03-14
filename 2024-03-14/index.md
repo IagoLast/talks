@@ -75,6 +75,18 @@ Perfecto, pues el objetivo de esta charla es doble. Por una parte quiero dar una
 
 ---
 
+# El problema
+
+# 🌍 ~ 🌞
+
+<video controls>
+  <source src="img/calendar.mp4" type="video/mp4">
+</video>
+
+## https://www.youtube.com/watch?v=nQgQoQqz4Nk
+
+---
+
 # Calendar
 
 ![bg right:58%](img/sun_moon.webp)
