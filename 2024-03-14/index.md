@@ -107,7 +107,7 @@ Como todos sabreis, el sol sale cada día y la luna tiene un ciclo de aproximada
 
 # 🌞
 
-1 solar days
+Día solar (1)
 
 ![bg right:70% ](img/dia-sideral.jpg)
 
@@ -123,7 +123,7 @@ Un día solar, es el tiempo que tarda la tierra en dar una vuelta sobre si misma
 
 # 🌔
 
-29.5 solar days
+Ciclo lunar (29.5)
 
 ![bg right:70% ](img/ciclo_lunar.webp)
 
@@ -140,7 +140,11 @@ Un día solar, es el tiempo que tarda la tierra en dar una vuelta sobre si misma
 ![bg contain](img/02.jpeg)
 
 <!--
- Los primeros calendarios de los que se tiene constancia eran puramente lunares.
+
+ Como imaginareis en esta época las matemáticas no estaban demasiado desarrolladas o sea que para medir tiempos "grandes" lo más común era utiliazr calendarios lunares.
+
+
+Y los primeros calendarios de los que se tiene constancia eran puramente lunares.
  -->
 
 ---
