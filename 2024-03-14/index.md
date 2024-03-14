@@ -75,15 +75,13 @@ Perfecto, pues el objetivo de esta charla es doble. Por una parte quiero dar una
 
 ---
 
-# El problema
+# El problema 🌍 ~ 🌞
 
-# 🌍 ~ 🌞
-
-<video controls>
+<video style="margin:auto" controls width="700" height="480px">
   <source src="img/calendar.mp4" type="video/mp4">
 </video>
 
-## https://www.youtube.com/watch?v=nQgQoQqz4Nk
+<!-- footer: 'https://www.youtube.com/watch?v=nQgQoQqz4Nk' -->
 
 ---
 
@@ -102,6 +100,8 @@ Para medir el tiempo tenemos que buscar un suceso periódico, es decir, uno que 
 Como todos sabreis, el sol sale cada día y la luna tiene un ciclo de aproximadamente 28 días y por ello los primeros humanos los empezaron a utilizar para medir el tiempo.
 
 -->
+
+<!-- footer: '' -->
 
 ---
 
