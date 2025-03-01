@@ -68,3 +68,7 @@ Dealing with time & dates sucks.
 ---
 
 ![bg contain](img/4.png)
+
+---
+
+[LOOM](https://www.loom.com/share/f66de20594df432a9bd23b3cb5bb120b?sid=65cf25ab-f9bc-46c4-968b-1b3acddb6bc6)
